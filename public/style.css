@@ -1,0 +1,75 @@
+/* Todo 앱 — 단순하고 깔끔한 스타일 */
+
+body {
+  font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  background: #F9FAFB;
+  color: #1F2937;
+  margin: 0;
+}
+
+.site-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 32px;
+  background: #FFF;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.site-header strong { color: #2563EB; letter-spacing: 2px; }
+.site-header .sub { color: #9CA3AF; font-size: 13px; }
+
+main { max-width: 560px; margin: 0 auto; padding: 24px 16px; }
+
+.add-form { display: flex; gap: 8px; }
+.add-form input[type="text"] {
+  flex: 1; padding: 12px;
+  border: 1px solid #E5E7EB; border-radius: 8px;
+}
+.add-form input[type="date"] {
+  padding: 10px; border: 1px solid #E5E7EB; border-radius: 8px;
+}
+.add-form button {
+  background: #2563EB; color: #FFF; border: none;
+  border-radius: 8px; padding: 0 20px; cursor: pointer;
+}
+
+.filter { margin: 16px 0; }
+.filter a {
+  color: #6B7280; text-decoration: none;
+  margin-right: 12px; font-size: 14px;
+}
+.filter a.on { color: #2563EB; font-weight: bold; }
+
+.todo-list { padding: 0; }
+.todo-list li {
+  list-style: none;
+  background: #FFF; border: 1px solid #E5E7EB; border-radius: 8px;
+  padding: 10px 12px; margin: 8px 0;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.todo-list form { display: inline; }
+
+.check {
+  width: 26px; height: 26px;
+  border: 2px solid #E5E7EB; border-radius: 50%;
+  background: #FFF; cursor: pointer; color: #FFF;
+}
+.check.checked { background: #2563EB; border-color: #2563EB; }
+
+.title { flex: 1; }
+.title.done { text-decoration: line-through; color: #9CA3AF; }
+.due { color: #D97706; margin-left: 6px; }
+
+.edit-link { color: #6B7280; font-size: 13px; text-decoration: none; }
+.edit-link:hover { color: #2563EB; }
+
+.delete {
+  background: none; border: none; color: #DC2626;
+  cursor: pointer; font-size: 13px;
+}
+
+.empty { color: #9CA3AF; text-align: center; padding: 24px; }
+
+footer { text-align: center; color: #9CA3AF; padding: 24px; font-size: 13px; }

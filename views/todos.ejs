@@ -1,0 +1,52 @@
+<%- include("partials/header") %>
+
+<h1>나의 할 일</h1>
+
+<!-- [C] 등록 폼 (실습 2) -->
+<form method="POST" action="/todos" class="add-form">
+  <input type="text" name="title" placeholder="할 일을 입력하세요" required>
+  <input type="date" name="due_date" title="마감일 (선택)">
+  <button type="submit">추가</button>
+</form>
+
+<!-- 필터 (실습 5) -->
+<nav class="filter">
+  <a href="/todos" class="<%= filter === 'all' ? 'on' : '' %>">전체</a>
+  <a href="/todos?filter=active" class="<%= filter === 'active' ? 'on' : '' %>">미완료</a>
+  <a href="/todos?filter=done" class="<%= filter === 'done' ? 'on' : '' %>">완료</a>
+</nav>
+
+<% if (todos.length === 0) { %>
+  <p class="empty">표시할 할 일이 없습니다.</p>
+<% } else { %>
+  <ul class="todo-list">
+    <% todos.forEach(function (todo) { %>
+      <li>
+        <!-- [U] 완료 토글 (실습 3) -->
+        <form method="POST" action="/todos/<%= todo.id %>/toggle">
+          <button type="submit" class="check <%= todo.done ? 'checked' : '' %>">
+            <%= todo.done ? "✓" : "" %>
+          </button>
+        </form>
+
+        <span class="title <%= todo.done ? 'done' : '' %>">
+          <%= todo.title %>
+          <% if (todo.due_date) { %>
+            <small class="due">~<%= new Date(todo.due_date).toLocaleDateString("ko-KR") %></small>
+          <% } %>
+        </span>
+
+        <!-- [U] 수정 (실습 3) -->
+        <a class="edit-link" href="/todos/<%= todo.id %>/edit">수정</a>
+
+        <!-- [D] 삭제 (실습 4) -->
+        <form method="POST" action="/todos/<%= todo.id %>/delete"
+              onsubmit="return confirm('삭제할까요?');">
+          <button type="submit" class="delete">삭제</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>
+
+<%- include("partials/footer") %>

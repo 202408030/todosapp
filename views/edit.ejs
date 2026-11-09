@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<h2>할 일 수정</h2>
+
+<form action="/todos/<%= todo.id %>/edit" method="POST">
+    <p>
+        <label>할 일</label>
+        <input type="text" name="title"
+               value="<%= todo.title %>" required>
+    </p>
+
+    <p>
+        <label>마감일</label>
+        <input type="date" name="due_date"
+               value="<%= todo.due_date || '' %>">
+    </p>
+
+    <button type="submit">수정 완료</button>
+    <a href="/todos">취소</a>
+</form>
+
+<%- include('partials/footer') %>
